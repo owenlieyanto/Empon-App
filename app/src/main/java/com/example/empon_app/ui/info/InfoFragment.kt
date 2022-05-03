@@ -6,37 +6,56 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.empon_app.R
 import com.example.empon_app.databinding.FragmentInfoBinding
+import kotlinx.android.synthetic.main.fragment_info.*
 
 class InfoFragment : Fragment() {
-
-    private var _binding: FragmentInfoBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var viewModel: ListEmponViewModel
+    private val EmponListAdapter = InfoEmponListAdapter(arrayListOf())
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(InfoViewModel::class.java)
-
-        _binding = FragmentInfoBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_info, container, false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(ListEmponViewModel::class.java)
+        viewModel.insert()
+        recycleViewEmpon.layoutManager = LinearLayoutManager(context)
+        recycleViewEmpon.adapter = EmponListAdapter
+
+        observeViewModel()
+    }
+
+    fun observeViewModel(){
+        viewModel.listEmponLD.observe(viewLifecycleOwner, Observer {
+            EmponListAdapter.updateEmponList(it)
+        })
+
+//        viewModel.paketLoadingError.observe(viewLifecycleOwner, Observer {
+//            if(it == true) {
+//                txtError.visibility = View.VISIBLE
+//            } else {
+//                txtError.visibility = View.GONE
+//            }
+//        })
+//
+//        viewModel.paket_is_loading.observe(viewLifecycleOwner, Observer {
+//            if(it == true) {
+//                recyclerViewPaketTryout.visibility = View.GONE
+//                progressLoad.visibility = View.VISIBLE
+//            } else {
+//                recyclerViewPaketTryout.visibility = View.VISIBLE
+//                progressLoad.visibility = View.GONE
+//            }
+//        })
     }
 }
