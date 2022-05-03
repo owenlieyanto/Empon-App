@@ -25,7 +25,7 @@ class InfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ListEmponViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ListEmponViewModel::class.java]
         viewModel.insert()
         recycleViewEmpon.layoutManager = LinearLayoutManager(context)
         recycleViewEmpon.adapter = emponListAdapter

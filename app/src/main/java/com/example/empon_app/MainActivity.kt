@@ -8,12 +8,18 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.empon_app.databinding.ActivityMainBinding
+import com.example.empon_app.model.Empon
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.apache.commons.csv.CSVFormat
+import org.apache.commons.csv.CSVParser
 import java.io.BufferedReader
-import java.io.File
+import java.io.IOException
 import java.io.InputStream
-import java.io.InputStreamReader
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.util.stream.Stream
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,12 +43,64 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+//        csvReader().open("src/main/assets/data_empon.tsv") {
+//            readAllAsSequence().forEach { row ->
+//                //Do something
+//                Log.d("read", row.toString())
+//
+//            }
+//        }
+
+
+        val assetManager = resources.assets
+        var inputStream: InputStream? = null
+
+        try {
+            inputStream = assetManager.open("data_empon.tsv")
+            if (inputStream != null) {
+//                val inputAsString = inputStream.bufferedReader().use { it.readText() }
+                val inputAsString = inputStream.bufferedReader()
+
+                val csvParser = CSVParser(inputAsString, CSVFormat.newFormat('\t'));
+                for (csvRecord in csvParser) {
+                    val jenis = csvRecord.get(0)
+                    val namaLatin = csvRecord.get(1)
+                    val manfaat = csvRecord.get(2)
+                    val kandungan = csvRecord.get(3)
+                    val gambar = ""
+                    Log.d("read", Empon(jenis, namaLatin, manfaat, kandungan, gambar).toString())
+                }
+
+                Log.d("read", "It worked!")
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+//        // this is tsv reader's option
+//        val tsvReader = csvReader {
+//            charset = "ISO_8859_1"
+//            quoteChar = '"'
+//            delimiter = '\t'
+//            escapeChar = '\\'
+//        }
+//        tsvReader.open("") {
+//            readAllAsSequence().forEach { row: List<String> ->
+//                //Do something
+//                Log.d("read", row.toString()) //[a, b, c]
+//            }
+//        }
+
+//        readFromAsset()
     }
 
     fun readFromAsset(): String {
         val file_name = "data_empon.tsv"
         val bufferReader = application.assets.open(file_name).bufferedReader()
         val data = bufferReader.use {
+            Log.d("read", it.readText())
             it.readText()
         }
 

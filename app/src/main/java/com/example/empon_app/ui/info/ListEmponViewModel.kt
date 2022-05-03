@@ -1,6 +1,7 @@
 package com.example.empon_app.ui.info
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -28,8 +29,6 @@ class ListEmponViewModel(application: Application): AndroidViewModel(application
         kumpulanEmpon.add(empon2)
 
         listEmponLD.value = kumpulanEmpon
-
-
     }
 }
 
