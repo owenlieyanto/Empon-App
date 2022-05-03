@@ -1,13 +1,19 @@
 package com.example.empon_app
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.empon_app.databinding.ActivityMainBinding
+import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.io.BufferedReader
+import java.io.File
+import java.io.InputStream
+import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,5 +37,15 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    fun readFromAsset(): String {
+        val file_name = "data_empon.tsv"
+        val bufferReader = application.assets.open(file_name).bufferedReader()
+        val data = bufferReader.use {
+            it.readText()
+        }
+
+        return data
     }
 }

@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.empon_app.R
-import com.example.empon_app.databinding.FragmentInfoBinding
 import kotlinx.android.synthetic.main.fragment_info.*
 
 class InfoFragment : Fragment() {
     private lateinit var viewModel: ListEmponViewModel
-    private val EmponListAdapter = InfoEmponListAdapter(arrayListOf())
+    private val emponListAdapter = InfoEmponListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +28,14 @@ class InfoFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListEmponViewModel::class.java)
         viewModel.insert()
         recycleViewEmpon.layoutManager = LinearLayoutManager(context)
-        recycleViewEmpon.adapter = EmponListAdapter
+        recycleViewEmpon.adapter = emponListAdapter
 
         observeViewModel()
     }
 
     fun observeViewModel(){
         viewModel.listEmponLD.observe(viewLifecycleOwner, Observer {
-            EmponListAdapter.updateEmponList(it)
+            emponListAdapter.updateEmponList(it)
         })
 
 //        viewModel.paketLoadingError.observe(viewLifecycleOwner, Observer {

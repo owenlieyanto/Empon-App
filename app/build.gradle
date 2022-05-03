@@ -52,5 +52,6 @@ dependencies {
 
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.2.0") //for JVM platform
 
 }

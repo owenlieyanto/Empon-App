@@ -10,21 +10,17 @@ import com.example.empon_app.R
 import com.example.empon_app.model.Empon
 import com.example.empon_app.R.layout.fragment_list_empon_card
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_list_empon_card.view.*
 
 
-class InfoEmponListAdapter(val emponList:ArrayList<Empon>)
-    : RecyclerView.Adapter<InfoEmponListAdapter.EmponViewHolder>() {
+class InfoEmponListAdapter(val emponList: ArrayList<Empon>) :
+    RecyclerView.Adapter<InfoEmponListAdapter.EmponViewHolder>() {
 
-    class EmponViewHolder(var view: View) : RecyclerView.ViewHolder(view){
-        val jenisEmpon = itemView.findViewById<TextView>(R.id.textViewNamaEmpon)
-        val namalatinEmpon = itemView.findViewById<TextView>(R.id.textViewNamaLatin)
-        val imgEmpon = itemView.findViewById<ImageView>(R.id.imageViewEmpon)
-    }
+    class EmponViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmponViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-//        val view = inflater.inflate(R.layout.fragment_list_empon_card, parent, false)
         val view = inflater.inflate(fragment_list_empon_card, parent, false)
 
         return EmponViewHolder(view)
@@ -33,11 +29,11 @@ class InfoEmponListAdapter(val emponList:ArrayList<Empon>)
     override fun getItemCount(): Int {
         return emponList.size
     }
+
     override fun onBindViewHolder(holder: EmponViewHolder, position: Int) {
-        holder.jenisEmpon.text = emponList[position].jenis
-        holder.namalatinEmpon.text = emponList[position].jenis
-//        Picasso.get().load(R.drawable.quiz2).into(holder.view.imgPaket_card)
-//        holder.imgEmpon
+        holder.view.textViewNamaEmpon.text = emponList[position].jenis
+        holder.view.textViewNamaLatin.text = emponList[position].namaLatin
+        Picasso.get().load(R.drawable.empon1).into(holder.view.imageViewEmpon)
     }
 
     //supaya bisa diupdate

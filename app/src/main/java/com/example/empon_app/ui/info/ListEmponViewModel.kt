@@ -1,9 +1,12 @@
 package com.example.empon_app.ui.info
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.empon_app.model.Empon
+import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
+import java.io.File
 
 class ListEmponViewModel(application: Application): AndroidViewModel(application) {
     val listEmponLD = MutableLiveData<List<Empon>>()
@@ -25,10 +28,8 @@ class ListEmponViewModel(application: Application): AndroidViewModel(application
         kumpulanEmpon.add(empon2)
 
         listEmponLD.value = kumpulanEmpon
-    }
 
+
+    }
 }
 
-//    fun execute()[
-//
-//    ]
