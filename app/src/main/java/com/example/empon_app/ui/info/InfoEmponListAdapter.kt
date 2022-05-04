@@ -33,6 +33,7 @@ class InfoEmponListAdapter(val emponList: ArrayList<Empon>) :
 
     override fun getItemCount(): Int {
         return emponList.size
+//        return 3
     }
 
     override fun onBindViewHolder(holder: EmponViewHolder, position: Int) {

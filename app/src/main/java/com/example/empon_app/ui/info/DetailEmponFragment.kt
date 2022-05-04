@@ -11,6 +11,7 @@ import com.example.empon_app.MainActivity
 import com.example.empon_app.R
 import kotlinx.android.synthetic.main.fragment_detail_empon.*
 import kotlinx.android.synthetic.main.fragment_list_empon_card.*
+import kotlinx.android.synthetic.main.fragment_list_empon_card.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,6 +57,7 @@ class DetailEmponFragment : Fragment() {
                     textViewNamaEmponDetail.text = empon.jenis
                     textViewNamaLatinDetail.text = empon.namaLatin
                     textViewManfaatDetail.text = empon.manfaat
+                    imageViewEmponDetail.setImageResource(MainActivity.imageIdList[empon.id])
                 }
             }
         }
