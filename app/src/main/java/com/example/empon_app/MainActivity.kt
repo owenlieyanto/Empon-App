@@ -45,15 +45,6 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
-//        csvReader().open("src/main/assets/data_empon.tsv") {
-//            readAllAsSequence().forEach { row ->
-//                //Do something
-//                Log.d("read", row.toString())
-//
-//            }
-//        }
-
-
         val assetManager = resources.assets
         var inputStream: InputStream? = null
 
@@ -78,22 +69,6 @@ class MainActivity : AppCompatActivity() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
-//        // this is tsv reader's option
-//        val tsvReader = csvReader {
-//            charset = "ISO_8859_1"
-//            quoteChar = '"'
-//            delimiter = '\t'
-//            escapeChar = '\\'
-//        }
-//        tsvReader.open("") {
-//            readAllAsSequence().forEach { row: List<String> ->
-//                //Do something
-//                Log.d("read", row.toString()) //[a, b, c]
-//            }
-//        }
-
-//        readFromAsset()
     }
 
     fun readFromAsset(): String {
