@@ -9,7 +9,11 @@
         android:id="@+id/navigation_info"
         android:name="com.example.empon_app.ui.info.InfoFragment"
         android:label="@string/title_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/actionDetailEmponFragment"
+            app:destination="@id/detailEmponFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_detect"
@@ -30,4 +34,13 @@
         android:id="@+id/FAQFragment"
         android:name="com.example.empon_app.ui.about.FAQFragment"
         android:label="FAQFragment" />
+    <fragment
+        android:id="@+id/detailEmponFragment"
+        android:name="com.example.empon_app.ui.info.DetailEmponFragment"
+        android:label="fragment_detail_empon"
+        tools:layout="@layout/fragment_detail_empon" >
+        <argument
+            android:name="idEmpon"
+            app:argType="integer" />
+    </fragment>
 </navigation>
