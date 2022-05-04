@@ -27,14 +27,25 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var empons = arrayListOf<Empon>()
+
+        var imageIdList = arrayOf<Int>(
+            R.drawable.kunyit_kuning, //0
+            R.drawable.kunyit_hitam, //1
+            R.drawable.jahe_putih, //2
+            R.drawable.jahe_merah, //0R
+            R.drawable.jahe_emprit, //0
+            R.drawable.kunyit_putih, //0
+            R.drawable.kunyit_merah, //0
+            R.drawable.kencur, //
+            R.drawable.temulawak, //
+            R.drawable.lengkuas //
+        )
     }
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val empons = arrayListOf<Empon>()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -56,15 +67,6 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
-//        csvReader().open("src/main/assets/data_empon.tsv") {
-//            readAllAsSequence().forEach { row ->
-//                //Do something
-//                Log.d("read", row.toString())
-//
-//            }
-//        }
-
-
         val assetManager = resources.assets
         var inputStream: InputStream? = null
 
@@ -82,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                     val namaLatin = csvRecord.get(2)
                     val manfaat = csvRecord.get(3)
                     val kandungan = csvRecord.get(4)
-                    val gambar = ""
+                    val gambar = csvRecord.get(5)
                     empons.add(Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan, gambar))
                     Log.d("read", Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan, gambar).toString())
                 }

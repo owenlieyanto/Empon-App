@@ -37,12 +37,6 @@ class InfoFragment : Fragment() {
 
         observeViewModel()
 
-//        cardEmpon.setOnClickListener {
-//            val emponId = cardEmpon.tag.toString().toInt()
-//            val action = InfoFragmentDirections.actionDetailEmponFragment(emponId)
-//            Navigation.findNavController(it).navigate(action)
-//            Log.d("Id Empon", emponId.toString())
-//        }
     }
 
     fun observeViewModel(){
