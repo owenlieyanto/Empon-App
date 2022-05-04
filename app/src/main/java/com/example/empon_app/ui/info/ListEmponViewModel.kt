@@ -14,6 +14,7 @@ class ListEmponViewModel(application: Application): AndroidViewModel(application
     val kumpulanEmpon = arrayListOf<Empon>()
 
     fun insert() {
+        kumpulanEmpon.clear()
         val empon1 = Empon(
             "Kunyit Kuning",
             "Curcuma longa Linn. Syn. Curcuma domestica Val.",

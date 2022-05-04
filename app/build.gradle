@@ -6,6 +6,8 @@ plugins {
 
 android {
     compileSdk 31
+    apply plugin: "androidx.navigation.safeargs.kotlin"
+
 
     defaultConfig {
         applicationId "com.example.empon_app"
@@ -54,5 +56,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.2.0") //for JVM platform
     implementation 'org.apache.commons:commons-csv:1.5'
+
+//    val nav_version = "2.4.2"
+//    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+//    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
 }
