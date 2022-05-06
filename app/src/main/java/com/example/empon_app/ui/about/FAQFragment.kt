@@ -1,11 +1,14 @@
 package com.example.empon_app.ui.about
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
 import com.example.empon_app.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,5 +59,13 @@ class FAQFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        (requireActivity().findViewById<View>(R.id.nav_view) as BottomNavigationView).selectedItemId =
+            R.id.navigation_about
+        Log.d("asdf", (requireActivity().findViewById<View>(R.id.nav_view) as BottomNavigationView).menu[1].toString())
     }
 }

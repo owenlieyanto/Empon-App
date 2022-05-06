@@ -39,7 +39,6 @@ class InfoEmponListAdapter(val emponList: ArrayList<Empon>) :
     override fun onBindViewHolder(holder: EmponViewHolder, position: Int) {
 
 
-
         holder.view.textViewNamaEmpon.text = emponList[position].jenis
         holder.view.textViewNamaLatin.text = emponList[position].namaLatin
         holder.view.tag = emponList[position].id
@@ -47,7 +46,7 @@ class InfoEmponListAdapter(val emponList: ArrayList<Empon>) :
         holder.view.imageViewEmpon.setImageResource(MainActivity.imageIdList[position])
         holder.view.cardEmpon.setOnClickListener {
             val emponId = emponList[position].id!!.toInt()
-            val action = InfoFragmentDirections.actionDetailEmponFragment(emponId)
+            val action = InfoFragmentDirections.actionDetailEmpon(emponId)
             Navigation.findNavController(it).navigate(action)
             Log.d("Id Empon", emponId.toString())
         }

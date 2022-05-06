@@ -12,8 +12,9 @@
         android:layout_height="250dp"
         android:layout_marginTop="100dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/img"
+        android:background="@drawable/img"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,4 +27,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonProcess"
+        android:layout_width="159dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="5dp"
+        android:text="Process"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonUpload"
+        app:layout_constraintEnd_toEndOf="@+id/buttonUpload"
+        app:layout_constraintStart_toStartOf="@+id/buttonUpload" />
 </androidx.constraintlayout.widget.ConstraintLayout>

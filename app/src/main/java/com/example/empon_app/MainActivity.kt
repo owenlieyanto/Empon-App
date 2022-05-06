@@ -68,29 +68,25 @@ class MainActivity : AppCompatActivity() {
 
 
         val assetManager = resources.assets
-        var inputStream: InputStream? = null
+        var inputStream: InputStream?
 
         try {
-
             inputStream = assetManager.open("data_empon.tsv")
-            if (inputStream != null) {
-//                val inputAsString = inputStream.bufferedReader().use { it.readText() }
-                val inputAsString = inputStream.bufferedReader()
+            val inputAsString = inputStream.bufferedReader()
 
-                val csvParser = CSVParser(inputAsString, CSVFormat.newFormat('\t'));
-                for (csvRecord in csvParser) {
-                    val id = csvRecord.get(0)
-                    val jenis = csvRecord.get(1)
-                    val namaLatin = csvRecord.get(2)
-                    val manfaat = csvRecord.get(3)
-                    val kandungan = csvRecord.get(4)
-                    val gambar = csvRecord.get(5)
-                    empons.add(Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan, gambar))
-                    Log.d("read", Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan, gambar).toString())
-                }
-
-                Log.d("read", "It worked!")
+            val csvParser = CSVParser(inputAsString, CSVFormat.newFormat('\t'));
+            for (csvRecord in csvParser) {
+                val id = csvRecord.get(0)
+                val jenis = csvRecord.get(1)
+                val namaLatin = csvRecord.get(2)
+                val manfaat = csvRecord.get(3)
+                val kandungan = csvRecord.get(4)
+                val gambar = csvRecord.get(5)
+                empons.add(Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan, gambar))
+                Log.d("read", Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan, gambar).toString())
             }
+
+            Log.d("read", "It worked!")
         } catch (e: IOException) {
             e.printStackTrace()
         }
