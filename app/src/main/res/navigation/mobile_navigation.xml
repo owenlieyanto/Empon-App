@@ -19,7 +19,11 @@
         android:id="@+id/navigation_detect"
         android:name="com.example.empon_app.ui.detect.DetectFragment"
         android:label="@string/title_detect"
-        tools:layout="@layout/fragment_detect" />
+        tools:layout="@layout/fragment_detect" >
+        <action
+            android:id="@+id/action_navigation_detect_to_captureResultFragment"
+            app:destination="@id/navigation_captureResultFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_about"
@@ -41,6 +45,15 @@
         tools:layout="@layout/fragment_detail_empon">
         <argument
             android:name="idEmpon"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_captureResultFragment"
+        android:name="com.example.empon_app.ui.detect.CaptureResultFragment"
+        android:label="fragment_capture_result"
+        tools:layout="@layout/fragment_capture_result" >
+        <argument
+            android:name="empon_id"
             app:argType="integer" />
     </fragment>
 </navigation>

@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_list_empon_card.view.*
 
 
-class InfoEmponListAdapter(val emponList: ArrayList<Empon>) :
+class InfoEmponListAdapter(private val emponList: ArrayList<Empon>) :
     RecyclerView.Adapter<InfoEmponListAdapter.EmponViewHolder>() {
 
     class EmponViewHolder(var view: View) : RecyclerView.ViewHolder(view)

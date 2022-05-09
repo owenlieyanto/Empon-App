@@ -16,12 +16,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
 import com.example.empon_app.FileDataPart
 import com.example.empon_app.VolleyFileUploadRequest
 import com.example.empon_app.databinding.FragmentDetectBinding
+import com.example.empon_app.ui.info.InfoFragmentDirections
 import kotlinx.android.synthetic.main.fragment_detect.*
 import java.io.ByteArrayOutputStream
 import kotlin.collections.set
@@ -59,17 +61,19 @@ class DetectFragment : Fragment() {
         buttonProcess.visibility = View.INVISIBLE
 
         buttonProcess.setOnClickListener {
-            // TODO: send pic to API, retrieve, navigate to CaptureResultFragment
-
             val bitmap = (imageViewDetect.drawable as BitmapDrawable).bitmap
             val baos = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val imageToBeUploaded: ByteArray = baos.toByteArray()
 
-            Log.d("asdf", "imageToBeUploadedd = $imageToBeUploaded")
+            // TODO: use real API from internet
             val url = "http://10.0.2.2:5000/predict"
-
             uploadImage(url, imageToBeUploaded)
+
+            // TODO: navigate to CaptureResultFragment
+//            val emponId = emponList[position].id!!.toInt()
+//            val action = DetectFragmentDirections.actionNavigationDetectToCaptureResultFragment(emponId)
+//            Navigation.findNavController(it).navigate(action)
         }
 
         buttonUpload.setOnClickListener {
