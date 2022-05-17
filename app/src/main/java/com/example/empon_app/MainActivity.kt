@@ -22,26 +22,25 @@ import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
     companion object {
-        var empons = arrayListOf<Empon>()
 
-        var imageIdList = arrayOf<Int>(
+        lateinit var binding: ActivityMainBinding
+        val TAG = "asdf"
+        var empons = arrayListOf<Empon>()
+        var imageIdList = arrayOf(
             R.drawable.kunyit_kuning, //0
             R.drawable.kunyit_hitam, //1
             R.drawable.jahe_putih, //2
             R.drawable.jahe_merah, //0R
             R.drawable.jahe_emprit, //0
             R.drawable.kunyit_putih, //0
-            R.drawable.kunyit_merah, //0
             R.drawable.kencur, //
             R.drawable.temulawak, //
             R.drawable.lengkuas //
         )
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +53,6 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
         NavigationUI.setupWithNavController(navView, navController)
 
-
         val navController = findNavController(R.id.hostFragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -66,9 +64,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
         val assetManager = resources.assets
-        var inputStream: InputStream?
+        val inputStream: InputStream?
 
         try {
             inputStream = assetManager.open("data_empon.tsv")
@@ -81,9 +78,8 @@ class MainActivity : AppCompatActivity() {
                 val namaLatin = csvRecord.get(2)
                 val manfaat = csvRecord.get(3)
                 val kandungan = csvRecord.get(4)
-                val gambar = csvRecord.get(5)
-                empons.add(Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan, gambar))
-                Log.d("read", Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan, gambar).toString())
+                empons.add(Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan))
+                Log.d("read", Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan).toString())
             }
 
             Log.d("read", "It worked!")

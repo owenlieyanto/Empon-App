@@ -1,11 +1,16 @@
 package com.example.empon_app.model
 
 data class Empon(
-    val id:Int?,
-    val jenis:String?,
-    val namaLatin:String?,
-    val manfaat:String?,
-    val kandungan:String?,
-    val gambar:String?
+    val id: Int?,
+    val jenis: String?,
+    val namaLatin: String?,
+    val manfaat: String?,
+    val kandungan: String?
+)
+
+data class Question(
+    val id: Int?,
+    val title: String?,
+    val description: String?
 )
 

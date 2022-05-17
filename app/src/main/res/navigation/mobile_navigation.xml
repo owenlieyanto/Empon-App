@@ -21,7 +21,7 @@
         android:label="@string/title_detect"
         tools:layout="@layout/fragment_detect" >
         <action
-            android:id="@+id/action_navigation_detect_to_captureResultFragment"
+            android:id="@+id/action_to_captureResultFragment"
             app:destination="@id/navigation_captureResultFragment" />
     </fragment>
 
@@ -37,11 +37,15 @@
     <fragment
         android:id="@+id/navigation_FAQ"
         android:name="com.example.empon_app.ui.about.FAQFragment"
-        android:label="FAQ" />
+        android:label="FAQ" >
+        <action
+            android:id="@+id/action_to_navigation_detailFaqFragment"
+            app:destination="@id/navigation_detailFaqFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_detailEmpon"
         android:name="com.example.empon_app.ui.info.DetailEmponFragment"
-        android:label="fragment_detail_empon"
+        android:label="Detail Empon"
         tools:layout="@layout/fragment_detail_empon">
         <argument
             android:name="idEmpon"
@@ -50,10 +54,28 @@
     <fragment
         android:id="@+id/navigation_captureResultFragment"
         android:name="com.example.empon_app.ui.detect.CaptureResultFragment"
-        android:label="fragment_capture_result"
-        tools:layout="@layout/fragment_capture_result" >
+        android:label="Capture Result"
+        tools:layout="@layout/fragment_capture_result">
         <argument
             android:name="empon_id"
             app:argType="integer" />
+        <argument
+            android:name="accuracy"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_to_navigation_detect"
+            app:destination="@id/navigation_detect"
+            app:popUpTo="@id/navigation_detect" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_detailFaqFragment"
+        android:name="com.example.empon_app.ui.about.DetailFaqFragment"
+        android:label="Question Detail"
+        tools:layout="@layout/fragment_detail_faq">
+        <argument
+            android:name="questionTitle"
+            app:argType="string" />
+        <argument android:name="questionDescription"
+            app:argType="string" />
     </fragment>
 </navigation>

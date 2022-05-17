@@ -21,10 +21,12 @@ import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
 import com.example.empon_app.FileDataPart
+import com.example.empon_app.MainActivity.Companion.empons
+import com.example.empon_app.R
 import com.example.empon_app.VolleyFileUploadRequest
 import com.example.empon_app.databinding.FragmentDetectBinding
-import com.example.empon_app.ui.info.InfoFragmentDirections
 import kotlinx.android.synthetic.main.fragment_detect.*
+import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import kotlin.collections.set
 
@@ -41,18 +43,12 @@ class DetectFragment : Fragment() {
     private var imageUri: Uri? = null
     private val REQUEST_IMAGE_CAPTURE = 1
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        ViewModelProvider(this)[DetectViewModel::class.java]
-
-        _binding = FragmentDetectBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+        return inflater.inflate(R.layout.fragment_detect, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,20 +56,54 @@ class DetectFragment : Fragment() {
 
         buttonProcess.visibility = View.INVISIBLE
 
-        buttonProcess.setOnClickListener {
+        buttonProcess.setOnClickListener { itView: View? ->
             val bitmap = (imageViewDetect.drawable as BitmapDrawable).bitmap
             val baos = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val imageToBeUploaded: ByteArray = baos.toByteArray()
 
             // TODO: use real API from internet
+//            val url = "http://owenlie.pythonanywhere.com/predict"
             val url = "http://10.0.2.2:5000/predict"
-            uploadImage(url, imageToBeUploaded)
+            val request = object : VolleyFileUploadRequest(
+                POST,
+                url,
+                Response.Listener {
+                    val json = String(it!!.data)
+                    val jsonObject = JSONObject(json)
+                    val predicted_empon = jsonObject.get("predicted_class")
 
-            // TODO: navigate to CaptureResultFragment
-//            val emponId = emponList[position].id!!.toInt()
-//            val action = DetectFragmentDirections.actionNavigationDetectToCaptureResultFragment(emponId)
-//            Navigation.findNavController(it).navigate(action)
+                    // TODO: get real accuracy
+                    val accuracy = 0
+                    val id_empon =
+                        empons.filter { empon -> empon.jenis == predicted_empon }.single().id
+
+                    Toast.makeText(
+                        context,
+                        "predicted class is $predicted_empon with id $id_empon",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                    Log.d("asdf", "response is: $json")
+
+                    val action = DetectFragmentDirections.actionToCaptureResultFragment(
+                        id_empon!!, accuracy
+                    )
+                    Navigation.findNavController(itView!!).navigate(action)
+                },
+                Response.ErrorListener {
+                    Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
+                    Log.d("asdf", "error is: $it")
+                }
+            ) {
+                override fun getByteData(): MutableMap<String, FileDataPart> {
+                    val params = HashMap<String, FileDataPart>()
+                    params["file"] = FileDataPart("image.jpeg", imageToBeUploaded, "jpeg")
+                    return params
+                }
+            }
+            Volley.newRequestQueue(context).add(request)
+
         }
 
         buttonUpload.setOnClickListener {
@@ -129,29 +159,4 @@ class DetectFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun uploadImage(postURL: String, imageData: ByteArray) {
-        val request = object : VolleyFileUploadRequest(
-            POST,
-            postURL,
-            Response.Listener {
-                val json = String(it.data)
-
-                Toast.makeText(context, json, Toast.LENGTH_SHORT).show()
-                Log.d("asdf", "response is: $json")
-            },
-            Response.ErrorListener {
-                Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                Log.d("asdf", "error is: $it")
-            }
-        ) {
-            override fun getByteData(): MutableMap<String, FileDataPart> {
-                val params = HashMap<String, FileDataPart>()
-                params["file"] = FileDataPart("image.jpeg", imageData, "jpeg")
-                return params
-            }
-        }
-        Volley.newRequestQueue(context).add(request)
-    }
-
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="4dp"
     tools:context=".ListEmponCard">
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,10 +15,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardEmpon"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             app:cardBackgroundColor="#E9EFC0"
             app:cardCornerRadius="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -29,15 +28,16 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
 
                 <ImageView
                     android:id="@+id/imageViewEmpon"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
                     android:foregroundGravity="center"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -47,23 +47,26 @@
 
                 <TextView
                     android:id="@+id/textViewNamaEmpon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="TextView"
-                    android:textSize="20sp"
+                    android:text="Nama EMpon"
+                    android:textSize="24sp"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageViewEmpon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textViewNamaLatin"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="TextView"
+                    android:text="Nama latinnya"
+                    android:textSize="20sp"
                     android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textViewNamaEmpon"
                     app:layout_constraintTop_toBottomOf="@+id/textViewNamaEmpon" />
             </androidx.constraintlayout.widget.ConstraintLayout>

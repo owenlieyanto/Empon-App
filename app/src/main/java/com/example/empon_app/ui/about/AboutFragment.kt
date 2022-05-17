@@ -27,8 +27,7 @@ class AboutFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this)[AboutViewModel::class.java]
+        ViewModelProvider(this)[AboutViewModel::class.java]
 
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
         val root: View = binding.root
