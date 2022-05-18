@@ -44,7 +44,7 @@ class DetailEmponFragment : Fragment() {
             for (empon in empons) {
                 if (empon.id!!.equals(idEmpon)) {
                     textViewKandunganDetail.text = empon.kandungan
-                    textViewNamaEmponDetail.text = empon.jenis
+                    textViewNamaEmponDetail.text = empon.namaJenis
                     textViewNamaLatinDetail.text = empon.namaLatin
                     textViewManfaatDetail.text = empon.manfaat
                     imageViewEmponDetail.setImageResource(MainActivity.imageIdList[empon.id])

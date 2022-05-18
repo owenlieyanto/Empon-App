@@ -52,7 +52,6 @@
                     android:layout_marginTop="16dp"
                     android:text="Hasil Deteksi: Nama Jenis Empon"
                     android:textSize="24sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewHasilDeteksi" />
@@ -62,8 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Akurasi: __%"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/textViewHasilDeteksi"
                     app:layout_constraintStart_toStartOf="@+id/textViewHasilDeteksi"
                     app:layout_constraintTop_toBottomOf="@+id/textViewHasilDeteksi" />
@@ -107,7 +105,6 @@
                     android:layout_height="wrap_content"
                     android:text="Meredakan Pilek atau Flu Mengurangi Peradangan Menurunkan Risiko Kanker Mendukung Kesehatan Kardiovaskular Menghilangkan Rasa Sakit Mengurangi Nyeri Otot Meningkatkan Fungis Otak dan Melindungi dari Alzheimer"
                     android:textSize="20sp"
-                    android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textViewNamaLatinCR"
@@ -119,7 +116,6 @@
                     android:layout_height="wrap_content"
                     android:text="Meredakan Pilek atau Flu Mengurangi Peradangan Menurunkan Risiko Kanker Mendukung Kesehatan Kardiovaskular Menghilangkan Rasa Sakit Mengurangi Nyeri Otot Meningkatkan Fungis Otak dan Melindungi dari Alzheimer"
                     android:textSize="20sp"
-                    android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textViewManfaatCR"

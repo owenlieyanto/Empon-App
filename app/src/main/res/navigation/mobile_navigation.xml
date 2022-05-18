@@ -61,7 +61,7 @@
             app:argType="integer" />
         <argument
             android:name="accuracy"
-            app:argType="integer" />
+            app:argType="float" />
         <action
             android:id="@+id/action_to_navigation_detect"
             app:destination="@id/navigation_detect"

@@ -74,12 +74,12 @@ class MainActivity : AppCompatActivity() {
             val csvParser = CSVParser(inputAsString, CSVFormat.newFormat('\t'));
             for (csvRecord in csvParser) {
                 val id = csvRecord.get(0)
-                val jenis = csvRecord.get(1)
-                val namaLatin = csvRecord.get(2)
-                val manfaat = csvRecord.get(3)
-                val kandungan = csvRecord.get(4)
-                empons.add(Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan))
-                Log.d("read", Empon(id.toInt(), jenis, namaLatin, manfaat, kandungan).toString())
+                val kodeJenis = csvRecord.get(1)
+                val namaJenis = csvRecord.get(2)
+                val namaLatin = csvRecord.get(3)
+                val manfaat = csvRecord.get(4)
+                val kandungan = csvRecord.get(5)
+                empons.add(Empon(id.toInt(), kodeJenis, namaJenis, namaLatin, manfaat, kandungan))
             }
 
             Log.d("read", "It worked!")

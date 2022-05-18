@@ -1,6 +1,7 @@
 package com.example.empon_app.ui.detect
 
 import android.os.Bundle
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +33,11 @@ class CaptureResultFragment : Fragment() {
             val selected_empon = empons.filter { empon -> empon.id == id_empon }.single()
 
             imageViewHasilDeteksi.setImageResource(MainActivity.imageIdList[selected_empon.id!!])
-            textViewHasilDeteksi.text = "Hasil Deteksi: ${selected_empon.jenis}"
-            textViewAkurasiCR.text = "Akurasi: $accuracy"
-            textViewJenisCR.text = selected_empon.jenis
+//            textViewHasilDeteksi.text = "Hasil Deteksi: ${selected_empon.jenis}"
+            textViewHasilDeteksi.text = Html.fromHtml("Hasil Deteksi: <b>${selected_empon.namaJenis}</b>")
+//            textViewAkurasiCR.text = "Akurasi: $accuracy"
+            textViewAkurasiCR.text = Html.fromHtml("Akurasi: <b>$accuracy</b>")
+            textViewJenisCR.text = selected_empon.namaJenis
             textViewNamaLatinCR.text = selected_empon.namaLatin
             textViewManfaatCR.text = selected_empon.manfaat
             textViewKandunganCR.text = selected_empon.kandungan

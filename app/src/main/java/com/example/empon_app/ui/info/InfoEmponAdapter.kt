@@ -30,7 +30,7 @@ class InfoEmponAdapter(private val emponList: ArrayList<Empon>) :
 
     override fun onBindViewHolder(holder: EmponViewHolder, position: Int) {
 
-        holder.view.textViewNamaEmpon.text = emponList[position].jenis
+        holder.view.textViewNamaEmpon.text = emponList[position].namaJenis
         holder.view.textViewNamaLatin.text = emponList[position].namaLatin
         holder.view.tag = emponList[position].id
         Log.d("idlist Empon", MainActivity.imageIdList[position].toString())

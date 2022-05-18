@@ -15,7 +15,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.android.volley.Request.Method.POST
 import com.android.volley.Response
@@ -74,20 +73,14 @@ class DetectFragment : Fragment() {
                     val predicted_empon = jsonObject.get("predicted_class")
 
                     // TODO: get real accuracy
-                    val accuracy = 0
-                    val id_empon =
-                        empons.filter { empon -> empon.jenis == predicted_empon }.single().id
+                    val accuracy = jsonObject.get("accuracy")
+                    val idEmpon =
+                        empons.single { empon -> empon.kodeJenis == predicted_empon }.id
 
-                    Toast.makeText(
-                        context,
-                        "predicted class is $predicted_empon with id $id_empon",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
                     Log.d("asdf", "response is: $json")
 
                     val action = DetectFragmentDirections.actionToCaptureResultFragment(
-                        id_empon!!, accuracy
+                        idEmpon!!, accuracy.toString().toFloat()
                     )
                     Navigation.findNavController(itView!!).navigate(action)
                 },
