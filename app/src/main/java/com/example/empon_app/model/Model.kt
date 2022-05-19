@@ -15,3 +15,8 @@ data class Question(
     val description: String?
 )
 
+data class Onboarding(
+    val title: String,
+    val description: String,
+    val image: Int
+)

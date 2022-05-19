@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.empon_app.ui.MainActivity
 import com.example.empon_app.R
+import com.example.empon_app.ui.ListDataViewModel
 import kotlinx.android.synthetic.main.fragment_info.*
 
 class InfoFragment : Fragment() {

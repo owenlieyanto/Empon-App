@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">empon_app</string>
+    <string name="app_name">Empon App</string>
     <string name="title_info">Info</string>
     <string name="title_detect">Detect</string>
     <string name="title_about">About</string>
