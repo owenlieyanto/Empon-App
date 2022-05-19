@@ -20,7 +20,7 @@ import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
 import com.example.empon_app.FileDataPart
-import com.example.empon_app.MainActivity.Companion.empons
+import com.example.empon_app.ui.MainActivity.Companion.empons
 import com.example.empon_app.R
 import com.example.empon_app.VolleyFileUploadRequest
 import com.example.empon_app.databinding.FragmentDetectBinding

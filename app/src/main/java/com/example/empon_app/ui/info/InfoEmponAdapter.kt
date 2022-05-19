@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.empon_app.MainActivity
+import com.example.empon_app.ui.MainActivity
 import com.example.empon_app.R.layout.card_empon
 import com.example.empon_app.model.Empon
 import kotlinx.android.synthetic.main.card_empon.view.*

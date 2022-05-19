@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.empon_app.MainActivity
+import com.example.empon_app.ui.MainActivity
 import com.example.empon_app.R
 import com.example.empon_app.ui.info.ListDataViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView

@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.empon_app.MainActivity
-import com.example.empon_app.MainActivity.Companion.empons
+import com.example.empon_app.ui.MainActivity
+import com.example.empon_app.ui.MainActivity.Companion.empons
 import com.example.empon_app.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_capture_result.*
@@ -28,19 +28,17 @@ class CaptureResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments.let {
-            val id_empon = CaptureResultFragmentArgs.fromBundle(requireArguments()).emponId
+            val idEmpon = CaptureResultFragmentArgs.fromBundle(requireArguments()).emponId
             val accuracy = CaptureResultFragmentArgs.fromBundle(requireArguments()).accuracy
-            val selected_empon = empons.filter { empon -> empon.id == id_empon }.single()
+            val selectedEmpon = empons.single { empon -> empon.id == idEmpon }
 
-            imageViewHasilDeteksi.setImageResource(MainActivity.imageIdList[selected_empon.id!!])
-//            textViewHasilDeteksi.text = "Hasil Deteksi: ${selected_empon.jenis}"
-            textViewHasilDeteksi.text = Html.fromHtml("Hasil Deteksi: <b>${selected_empon.namaJenis}</b>")
-//            textViewAkurasiCR.text = "Akurasi: $accuracy"
+            imageViewHasilDeteksi.setImageResource(MainActivity.imageIdList[selectedEmpon.id!!])
+            textViewHasilDeteksi.text = Html.fromHtml("Hasil Deteksi: <b>${selectedEmpon.namaJenis}</b>")
             textViewAkurasiCR.text = Html.fromHtml("Akurasi: <b>$accuracy</b>")
-            textViewJenisCR.text = selected_empon.namaJenis
-            textViewNamaLatinCR.text = selected_empon.namaLatin
-            textViewManfaatCR.text = selected_empon.manfaat
-            textViewKandunganCR.text = selected_empon.kandungan
+            textViewJenisCR.text = selectedEmpon.namaJenis
+            textViewNamaLatinCR.text = selectedEmpon.namaLatin
+            textViewManfaatCR.text = selectedEmpon.manfaat
+            textViewKandunganCR.text = selectedEmpon.kandungan
         }
 
         buttonCaptureAgain.setOnClickListener {

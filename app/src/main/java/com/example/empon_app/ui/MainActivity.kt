@@ -1,4 +1,4 @@
-package com.example.empon_app
+package com.example.empon_app.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.empon_app.R
 import com.example.empon_app.databinding.ActivityMainBinding
 import com.example.empon_app.model.Empon
 import com.google.android.material.bottomnavigation.BottomNavigationView
