@@ -1,7 +1,10 @@
 package com.example.empon_app.ui
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -28,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
 
         lateinit var binding: ActivityMainBinding
-        val TAG = "asdf"
+        const val TAG = "asdf"
         var empons = arrayListOf<Empon>()
         var imageIdList = arrayOf(
             R.drawable.kunyit_kuning, //0
@@ -49,14 +52,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // region OnboardingConfig
+        val sharedPref = this.getSharedPreferences("onboarding_accessed", Context.MODE_PRIVATE)
+        val defaultValue = resources.getBoolean(R.bool.onboarding_accessed)
+        val onboardingAccessed = sharedPref.getBoolean("onboarding_accessed", defaultValue)
+
+        if (!onboardingAccessed) {
+            val intent = Intent(this, OnboardingActivity::class.java)
+            startActivity(intent)
+        }
+        // endregion
+
+        // region setting up ActionBar, BotNav
         val navView: BottomNavigationView = binding.navView
         navController = Navigation.findNavController(this, R.id.hostFragment)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
         NavigationUI.setupWithNavController(navView, navController)
 
         val navController = findNavController(R.id.hostFragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_info, R.id.navigation_detect, R.id.navigation_about
@@ -64,9 +77,15 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        // endregion
 
+        loadEmponFromTsv()
+
+    }
+
+    private fun loadEmponFromTsv() {
         val assetManager = resources.assets
-        val inputStream: InputStream?
+        val inputStream: InputStream
 
         try {
             inputStream = assetManager.open("data_empon.tsv")
@@ -82,12 +101,9 @@ class MainActivity : AppCompatActivity() {
                 val kandungan = csvRecord.get(5)
                 empons.add(Empon(id.toInt(), kodeJenis, namaJenis, namaLatin, manfaat, kandungan))
             }
-
-            Log.d("read", "It worked!")
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,4 +1,4 @@
-package com.example.empon_app.ui.info
+package com.example.empon_app.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
