@@ -76,6 +76,7 @@ class OnboardingActivity : AppCompatActivity() {
         )
     }
 
+    /** source: https://youtu.be/5p59XpDUKhg */
     private fun setupIndicators() {
         indicatorsContainer = findViewById(R.id.indicatorsContainer)
         val indicators = arrayOfNulls<ImageView>(3)
@@ -98,12 +99,13 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun setCurrentOnboardingContent(position: Int) {
-        var onboardingObj = onboardingList[position]
+        val onboardingObj = onboardingList[position]
         imageViewOnboarding.setImageResource(onboardingObj.image)
         textViewOnboardingTitle.text = onboardingObj.title
         textViewOnboardingDescription.text = onboardingObj.description
     }
 
+    /** source: https://youtu.be/5p59XpDUKhg */
     private fun setCurrentIndicator(position: Int) {
         val childCount = indicatorsContainer.childCount
         for (i in 0 until childCount) {

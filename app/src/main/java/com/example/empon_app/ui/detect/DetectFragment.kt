@@ -34,10 +34,6 @@ class DetectFragment : Fragment() {
 
     private var _binding: FragmentDetectBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
     private val pickImage = 100
     private var imageUri: Uri? = null
     private val REQUEST_IMAGE_CAPTURE = 1
@@ -72,7 +68,6 @@ class DetectFragment : Fragment() {
                     val jsonObject = JSONObject(json)
                     val predicted_empon = jsonObject.get("predicted_class")
 
-                    // TODO: get real accuracy
                     val accuracy = jsonObject.get("accuracy")
                     val idEmpon =
                         empons.single { empon -> empon.kodeJenis == predicted_empon }.id

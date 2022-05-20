@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     companion object {
-
         lateinit var binding: ActivityMainBinding
         const val TAG = "asdf"
         var empons = arrayListOf<Empon>()
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // region OnboardingConfig
+        /** region OnboardingConfig */
         val sharedPref = this.getSharedPreferences("onboarding_accessed", Context.MODE_PRIVATE)
         val defaultValue = resources.getBoolean(R.bool.onboarding_accessed)
         val onboardingAccessed = sharedPref.getBoolean("onboarding_accessed", defaultValue)
@@ -61,9 +60,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, OnboardingActivity::class.java)
             startActivity(intent)
         }
-        // endregion
+        /** endregion */
 
-        // region setting up ActionBar, BotNav
+        /** region setting up ActionBar, BotNav */
         val navView: BottomNavigationView = binding.navView
         navController = Navigation.findNavController(this, R.id.hostFragment)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
@@ -77,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        // endregion
+        /** endregion */
 
         loadEmponFromTsv()
 
