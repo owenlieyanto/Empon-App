@@ -87,7 +87,7 @@ class TakePhotoActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
                     Log.d(TAG, msg)
 
-                    // TODO: set the saved uri to the image view @DetectFragment
+                    // set the saved uri to the image view @DetectFragment
                     val intent = Intent()
                     intent.putExtra("image_uri", savedUri)
                     setResult(RESULT_OK, intent)

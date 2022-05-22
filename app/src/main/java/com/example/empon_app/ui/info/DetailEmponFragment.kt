@@ -12,16 +12,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_detail_empon.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailEmponFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailEmponFragment : Fragment() {
 
     private val navView: BottomNavigationView = MainActivity.binding.navView
