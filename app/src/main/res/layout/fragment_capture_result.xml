@@ -28,17 +28,18 @@
                 <View
                     android:id="@+id/view2"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="8dp"
                     android:background="@color/purple_700"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewAkurasiCR"
-                    tools:layout_editor_absoluteX="-16dp" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewAkurasiCR" />
 
                 <ImageView
                     android:id="@+id/imageViewHasilDeteksi"
                     android:layout_width="232dp"
                     android:layout_height="232dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="24dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/img"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -70,8 +71,8 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Jenis:"
+                    android:layout_marginTop="8dp"
+                    android:text="Jenis :"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView6"
                     app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -125,9 +126,9 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Nama Latin:"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Nama Latin :"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -136,8 +137,8 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Manfaat:"
+                    android:layout_marginTop="8dp"
+                    android:text="Manfaat :"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView6"
                     app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -147,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Kandungan:"
+                    android:text="Kandungan :"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView7"
                     app:layout_constraintTop_toBottomOf="@+id/textViewManfaatCR" />

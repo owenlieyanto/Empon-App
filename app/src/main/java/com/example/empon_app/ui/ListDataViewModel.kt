@@ -25,7 +25,7 @@ class ListDataViewModel(application: Application): AndroidViewModel(application)
         ),
         Question(
             2,
-            "Jenis empon apa saja yang dapat dideteksi?",
+            "Jenis Empon-Empon apa saja yang Dapat Dideteksi?",
             "Ada 9 jenis empon-empon yang dapat dideteksi oleh aplikasi ini." +
                     "\n- jahe_emprit\n- jahe_merah\n- jahe_putih\n- kencur\n- kunyit_hitam\n- kunyit_kuning\n- kunyit_putih\n- lengkuas\n- temulawak"
         )

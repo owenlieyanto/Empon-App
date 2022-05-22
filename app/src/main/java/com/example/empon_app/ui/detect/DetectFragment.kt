@@ -14,6 +14,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCapture.FLASH_MODE_AUTO
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.android.volley.Request.Method.POST
@@ -24,6 +26,7 @@ import com.example.empon_app.ui.MainActivity.Companion.empons
 import com.example.empon_app.R
 import com.example.empon_app.VolleyFileUploadRequest
 import com.example.empon_app.databinding.FragmentDetectBinding
+import com.example.empon_app.ui.OnboardingActivity
 import kotlinx.android.synthetic.main.fragment_detect.*
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
@@ -102,12 +105,8 @@ class DetectFragment : Fragment() {
                 setTitle("Choose an option")
                 setItems(opt) { _, which ->
                     if (opt[which] == "Camera") {
-                        val gallery = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                        try {
-                            startActivityForResult(gallery, REQUEST_IMAGE_CAPTURE)
-                        } catch (e: ActivityNotFoundException) {
-                            // display error state to the user
-                        }
+                        val intent = Intent(context, TakePhotoActivity::class.java)
+                        startActivityForResult(intent,1)
                     } else {
                         val gallery =
                             Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
@@ -128,8 +127,8 @@ class DetectFragment : Fragment() {
             imageUri = data?.data
             imageViewDetect.setImageURI(imageUri)
         } else if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            imageViewDetect.setImageBitmap(imageBitmap)
+            val savedUri = data?.extras?.get("image_uri") as Uri
+            imageViewDetect.setImageURI(savedUri)
         }
     }
 
