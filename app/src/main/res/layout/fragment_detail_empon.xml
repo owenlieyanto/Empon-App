@@ -83,7 +83,7 @@
                 android:id="@+id/textViewManfaatDetail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:text="meredakan gejala hamil\nmeredakan gejala hamil\nmeredakan gejala hamil\nmeredakan gejala hamil\nmeredakan gejala hamil\nmeredakan gejalaasdf adsf asdf hamil"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

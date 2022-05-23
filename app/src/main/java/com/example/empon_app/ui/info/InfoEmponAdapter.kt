@@ -33,18 +33,16 @@ class InfoEmponAdapter(private val emponList: ArrayList<Empon>) :
         holder.view.textViewNamaEmpon.text = emponList[position].namaJenis
         holder.view.textViewNamaLatin.text = emponList[position].namaLatin
         holder.view.tag = emponList[position].id
-        Log.d("idlist Empon", MainActivity.imageIdList[position].toString())
         holder.view.imageViewEmpon.setImageResource(MainActivity.imageIdList[position])
 
         holder.view.cardEmpon.setOnClickListener {
             val emponId = emponList[position].id!!.toInt()
             val action = InfoFragmentDirections.actionDetailEmpon(emponId)
             Navigation.findNavController(it).navigate(action)
-            Log.d("Id Empon", emponId.toString())
         }
     }
 
-    //supaya bisa diupdate
+    // supaya bisa diupdate
     fun updateEmponList(newEmponList: List<Empon>) {
         emponList.clear()
         emponList.addAll(newEmponList)

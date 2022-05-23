@@ -33,7 +33,7 @@ class CaptureResultFragment : Fragment() {
             val selectedEmpon = empons.single { empon -> empon.id == idEmpon }
 
             imageViewHasilDeteksi.setImageResource(MainActivity.imageIdList[selectedEmpon.id!!])
-            textViewHasilDeteksi.text = Html.fromHtml("Hasil Deteksi: <b>${selectedEmpon.namaJenis}</b>")
+            textViewHasilDeteksi.text = Html.fromHtml("Hasil Prediksi: <b>${selectedEmpon.namaJenis}</b>")
             textViewAkurasiCR.text = Html.fromHtml("Akurasi: <b>$accuracy</b>")
             textViewJenisCR.text = selectedEmpon.namaJenis
             textViewNamaLatinCR.text = selectedEmpon.namaLatin

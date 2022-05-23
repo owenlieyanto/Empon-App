@@ -2,7 +2,6 @@ package com.example.empon_app.ui.detect
 
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -14,19 +13,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCapture.FLASH_MODE_AUTO
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
 import com.example.empon_app.FileDataPart
-import com.example.empon_app.ui.MainActivity.Companion.empons
 import com.example.empon_app.R
 import com.example.empon_app.VolleyFileUploadRequest
 import com.example.empon_app.databinding.FragmentDetectBinding
-import com.example.empon_app.ui.OnboardingActivity
+import com.example.empon_app.ui.MainActivity.Companion.empons
 import kotlinx.android.synthetic.main.fragment_detect.*
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
@@ -106,7 +102,7 @@ class DetectFragment : Fragment() {
                 setItems(opt) { _, which ->
                     if (opt[which] == "Camera") {
                         val intent = Intent(context, TakePhotoActivity::class.java)
-                        startActivityForResult(intent,1)
+                        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
                     } else {
                         val gallery =
                             Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
