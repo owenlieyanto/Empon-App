@@ -3,6 +3,8 @@ package com.example.empon_app.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -22,7 +24,7 @@ import java.io.IOException
 import java.io.InputStream
 
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             R.drawable.temulawak, //
             R.drawable.lengkuas //
         )
+        var enabled = true
     }
 
 
@@ -110,6 +113,15 @@ class MainActivity : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun enable(b: Boolean) {
+        enabled = b
+        viewLoading.visibility = if (b) View.INVISIBLE else View.VISIBLE
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return if (enabled) super.dispatchTouchEvent(ev) else true
     }
 
 }

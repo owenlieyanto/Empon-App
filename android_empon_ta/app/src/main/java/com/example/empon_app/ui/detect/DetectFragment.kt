@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request.Method.POST
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
@@ -22,7 +23,9 @@ import com.example.empon_app.FileDataPart
 import com.example.empon_app.R
 import com.example.empon_app.VolleyFileUploadRequest
 import com.example.empon_app.databinding.FragmentDetectBinding
+import com.example.empon_app.ui.MainActivity
 import com.example.empon_app.ui.MainActivity.Companion.empons
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_detect.*
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
@@ -56,20 +59,19 @@ class DetectFragment : Fragment() {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val imageToBeUploaded: ByteArray = baos.toByteArray()
 
-            // TODO: use real API from internet
-//            val url = "http://owenlie.pythonanywhere.com/predict"
-            val url = "http://10.0.2.2:5000/predict"
+            onLoading(true)
+            val url = "http://143.198.192.71:5000/predict"
             val request = object : VolleyFileUploadRequest(
                 POST,
                 url,
                 Response.Listener {
                     val json = String(it!!.data)
                     val jsonObject = JSONObject(json)
-                    val predicted_empon = jsonObject.get("predicted_class")
+                    val predictedEmpon = jsonObject.get("predicted_class")
 
                     val accuracy = jsonObject.get("accuracy")
                     val idEmpon =
-                        empons.single { empon -> empon.kodeJenis == predicted_empon }.id
+                        empons.single { empon -> empon.kodeJenis == predictedEmpon }.id
 
                     Log.d("asdf", "response is: $json")
 
@@ -77,10 +79,12 @@ class DetectFragment : Fragment() {
                         idEmpon!!, accuracy.toString().toFloat()
                     )
                     Navigation.findNavController(itView!!).navigate(action)
+                    onLoading(false)
                 },
                 Response.ErrorListener {
                     Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
                     Log.d("asdf", "error is: $it")
+                    onLoading(false)
                 }
             ) {
                 override fun getByteData(): MutableMap<String, FileDataPart> {
@@ -89,6 +93,8 @@ class DetectFragment : Fragment() {
                     return params
                 }
             }
+            request.retryPolicy =
+                DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
             Volley.newRequestQueue(context).add(request)
 
         }
@@ -114,6 +120,20 @@ class DetectFragment : Fragment() {
         }
 
 
+    }
+
+    private fun onLoading(onLoading: Boolean) {
+        if (onLoading) {
+            progressBarWaitingResponse.visibility = View.VISIBLE
+            (activity as MainActivity).enable(false)
+//            buttonProcess.isEnabled = false
+//            buttonUpload.isEnabled = false
+        } else {
+            progressBarWaitingResponse.visibility = View.INVISIBLE
+            (activity as MainActivity).enable(true)
+//            buttonProcess.isEnabled = true
+//            buttonUpload.isEnabled = true
+        }
     }
 
     @Deprecated("Deprecated in Java")
