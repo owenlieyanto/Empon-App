@@ -96,7 +96,6 @@ class DetectFragment : Fragment() {
             request.retryPolicy =
                 DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
             Volley.newRequestQueue(context).add(request)
-
         }
 
         buttonUpload.setOnClickListener {

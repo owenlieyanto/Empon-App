@@ -8,12 +8,14 @@ app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpeg', 'jpg'}
 CLASS_NAMES = ['jahe_emprit', 'jahe_merah', 'jahe_putih', 'kencur', 'kunyit_hitam', 'kunyit_kuning', 'kunyit_putih', 'lengkuas', 'temulawak']
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
+
         file = request.files.get('file')
         if file is None or file.filename == '':
             return jsonify({'error': 'no file'})
@@ -31,8 +33,5 @@ def predict():
 
         except:
             return jsonify({'error': 'error during prediction'})
-    # 1 load image
-    # 2 image -> tensor
-    # 3 prediction
-    # 4 return json
+
     return jsonify({'result': 1})
