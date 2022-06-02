@@ -32,13 +32,20 @@ class CaptureResultFragment : Fragment() {
             val accuracy = CaptureResultFragmentArgs.fromBundle(requireArguments()).accuracy
             val selectedEmpon = empons.single { empon -> empon.id == idEmpon }
 
-            imageViewHasilDeteksi.setImageResource(MainActivity.imageIdList[selectedEmpon.id!!])
-            textViewHasilDeteksi.text = Html.fromHtml("Hasil Prediksi: <b>${selectedEmpon.namaJenis}</b>")
-            textViewAkurasiCR.text = Html.fromHtml("Akurasi: <b>$accuracy</b>")
-            textViewJenisCR.text = selectedEmpon.namaJenis
-            textViewNamaLatinCR.text = selectedEmpon.namaLatin
-            textViewManfaatCR.text = selectedEmpon.manfaat
-            textViewKandunganCR.text = selectedEmpon.kandungan
+            if (accuracy < 0.6) {
+                layoutLowAcc.visibility = View.VISIBLE
+            } else {
+                imageViewHasilDeteksi.setImageResource(MainActivity.imageIdList[selectedEmpon.id!!])
+                textViewHasilDeteksi.text = Html.fromHtml(
+                    "Hasil Prediksi" +
+                            ": <b>${selectedEmpon.namaJenis}</b>"
+                )
+                textViewAkurasiCR.text = Html.fromHtml("Akurasi: <b>$accuracy</b>")
+                textViewJenisCR.text = selectedEmpon.namaJenis
+                textViewNamaLatinCR.text = selectedEmpon.namaLatin
+                textViewManfaatCR.text = selectedEmpon.manfaat
+                textViewKandunganCR.text = selectedEmpon.kandungan
+            }
         }
 
         buttonCaptureAgain.setOnClickListener {

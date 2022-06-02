@@ -20,7 +20,7 @@ class ListDataViewModel(application: Application): AndroidViewModel(application)
         Question(
             1,
             "Bagaimana Cara Aplikasi ini Bekerja?",
-            "Aplikasi ini bekerja dengan mengambil citra empon-empon yang diunggah pengguna menggunakan kamera ataupun gambar yang sudah ada di galeri smartphone pengguna, lalu diproses dengan deep learning, sehingga menghasilkan hasil prediksi yang berupa nama jenis empon-empon."
+            "Aplikasi ini bekerja dengan mengambil citra empon-empon yang diunggah pengguna menggunakan kamera atau gambar yang sudah ada di galeri smartphone pengguna, lalu diproses dengan deep learning hingga menghasilkan hasil prediksi yang berupa nama jenis empon-empon."
         ),
         Question(
             2,

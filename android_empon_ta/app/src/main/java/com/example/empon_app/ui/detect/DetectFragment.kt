@@ -25,7 +25,6 @@ import com.example.empon_app.VolleyFileUploadRequest
 import com.example.empon_app.databinding.FragmentDetectBinding
 import com.example.empon_app.ui.MainActivity
 import com.example.empon_app.ui.MainActivity.Companion.empons
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_detect.*
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
@@ -52,6 +51,25 @@ class DetectFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         buttonProcess.visibility = View.INVISIBLE
+        buttonUpload.setOnClickListener {
+            val opt = arrayOf("Camera", "Gallery")
+            val builder = AlertDialog.Builder(context)
+            with(builder)
+            {
+                setTitle("Choose an option")
+                setItems(opt) { _, which ->
+                    if (opt[which] == "Camera") {
+                        val intent = Intent(context, TakePhotoActivity::class.java)
+                        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
+                    } else {
+                        val gallery =
+                            Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+                        startActivityForResult(gallery, pickImage)
+                    }
+                }
+                show()
+            }
+        }
 
         buttonProcess.setOnClickListener { itView: View? ->
             val bitmap = (imageViewDetect.drawable as BitmapDrawable).bitmap
@@ -97,27 +115,6 @@ class DetectFragment : Fragment() {
                 DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
             Volley.newRequestQueue(context).add(request)
         }
-
-        buttonUpload.setOnClickListener {
-            val opt = arrayOf("Camera", "Gallery")
-            val builder = AlertDialog.Builder(context)
-            with(builder)
-            {
-                setTitle("Choose an option")
-                setItems(opt) { _, which ->
-                    if (opt[which] == "Camera") {
-                        val intent = Intent(context, TakePhotoActivity::class.java)
-                        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
-                    } else {
-                        val gallery =
-                            Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-                        startActivityForResult(gallery, pickImage)
-                    }
-                }
-                show()
-            }
-        }
-
 
     }
 

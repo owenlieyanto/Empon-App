@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -17,7 +18,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.empon_app.R
 import kotlinx.android.synthetic.main.activity_take_photo.*
-import kotlinx.android.synthetic.main.fragment_detect.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -30,6 +30,8 @@ class TakePhotoActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
+
+    var flashOn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +53,22 @@ class TakePhotoActivity : AppCompatActivity() {
         buttonCameraCapture.setOnClickListener {
             takePhoto()
         }
+
+        buttonFlash.setOnClickListener {
+            if (flashOn) {
+                buttonFlash.setIconTintResource(R.color.white)
+                flashOn = false
+                startCamera(ImageCapture.FLASH_MODE_OFF)
+
+            } else {
+                buttonFlash.setIconTintResource(R.color.purple_200)
+                flashOn = true
+                startCamera(ImageCapture.FLASH_MODE_ON)
+
+
+            }
+        }
+
         outputDirectory = getOutputDirectory()
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
@@ -84,7 +102,10 @@ class TakePhotoActivity : AppCompatActivity() {
                     val savedUri = Uri.fromFile(photoFile)
 
                     val msg = "Photo capture succeeded: $savedUri"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
+                    val toast = Toast.makeText(baseContext, msg, Toast.LENGTH_LONG)
+                    toast.setGravity(Gravity.TOP or Gravity.CENTER_VERTICAL, 0, 0)
+                    toast.show()
+
                     Log.d(TAG, msg)
 
                     // set the saved uri to the image view @DetectFragment
@@ -96,7 +117,7 @@ class TakePhotoActivity : AppCompatActivity() {
             })
     }
 
-    private fun startCamera() {
+    private fun startCamera(flashOn: Int = ImageCapture.FLASH_MODE_OFF) {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({
@@ -111,7 +132,7 @@ class TakePhotoActivity : AppCompatActivity() {
                     it.setSurfaceProvider(viewFinder.surfaceProvider)
                 }
 
-            imageCapture = ImageCapture.Builder().build()
+            imageCapture = ImageCapture.Builder().setFlashMode(flashOn).build()
 
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
@@ -124,6 +145,7 @@ class TakePhotoActivity : AppCompatActivity() {
                 cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, imageCapture
                 )
+
 
             } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)

@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/drawable/capture_button.xml" value="0.2365" />
+        <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/drawable/ic_baseline_highlight_24.xml" value="0.2365" />
         <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/layout/activity_main.xml" value="0.2463768115942029" />
+        <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/layout/activity_take_photo.xml" value="0.2463768115942029" />
+        <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/layout/card_question.xml" value="0.2463768115942029" />
+        <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/layout/fragment_about.xml" value="0.2463768115942029" />
+        <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/layout/fragment_capture_result.xml" value="0.2463768115942029" />
+        <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/layout/fragment_detail_faq.xml" value="0.2463768115942029" />
         <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/layout/fragment_detect.xml" value="0.2463768115942029" />
+        <entry key="..\:/MAHASISWA/Semester 6/1604B071 Research Methodology C/TA/empon_app/android_empon_ta/app/src/main/res/xml/network_security_config.xml" value="0.2463768115942029" />
         <entry key="..\:/androidproject/empon_app/app/src/main/res/layout/activity_main.xml" value="0.184375" />
         <entry key="..\:/androidproject/empon_app/app/src/main/res/layout/fragment_about.xml" value="0.33" />
         <entry key="..\:/androidproject/empon_app/app/src/main/res/layout/fragment_detail_empon.xml" value="0.27527216174183516" />
