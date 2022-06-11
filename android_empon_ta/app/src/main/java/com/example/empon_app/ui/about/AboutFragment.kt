@@ -47,6 +47,6 @@ class AboutFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
-        imageViewAboutFace.setImageResource(R.drawable.rounded_face)
+        imageViewAboutFace.setImageResource(R.drawable.ic_baseline_person_24)
     }
 }

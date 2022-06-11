@@ -101,12 +101,11 @@ class TakePhotoActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
 
-                    val msg = "Photo capture succeeded: $savedUri"
-                    val toast = Toast.makeText(baseContext, msg, Toast.LENGTH_LONG)
-                    toast.setGravity(Gravity.TOP or Gravity.CENTER_VERTICAL, 0, 0)
+                    val msg = "Photo captured & saved."
+                    val toast = Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT)
                     toast.show()
 
-                    Log.d(TAG, msg)
+                    Log.d(TAG, msg + "$savedUri")
 
                     // set the saved uri to the image view @DetectFragment
                     val intent = Intent()

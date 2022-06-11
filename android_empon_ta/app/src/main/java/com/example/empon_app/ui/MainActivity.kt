@@ -91,7 +91,7 @@ open class MainActivity : AppCompatActivity() {
             inputStream = assetManager.open("data_empon.tsv")
             val inputAsString = inputStream.bufferedReader()
 
-            val csvParser = CSVParser(inputAsString, CSVFormat.newFormat('\t'));
+            val csvParser = CSVParser(inputAsString, CSVFormat.newFormat('\t').withFirstRecordAsHeader())
             for (csvRecord in csvParser) {
                 val id = csvRecord.get(0)
                 val kodeJenis = csvRecord.get(1)

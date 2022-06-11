@@ -7,11 +7,11 @@ import com.example.empon_app.model.Empon
 import com.example.empon_app.model.Question
 import java.util.ArrayList
 
-class ListDataViewModel(application: Application): AndroidViewModel(application) {
+class ListDataViewModel(application: Application) : AndroidViewModel(application) {
     val listEmponLD = MutableLiveData<List<Empon>>()
     val listQuestionLD = MutableLiveData<List<Question>>()
 
-    var kumpulanQuestions = arrayListOf(
+    private var kumpulanQuestions = arrayListOf(
         Question(
             0,
             "Apa itu Empon-Empon?",
@@ -19,8 +19,13 @@ class ListDataViewModel(application: Application): AndroidViewModel(application)
         ),
         Question(
             1,
-            "Bagaimana Cara Aplikasi ini Bekerja?",
-            "Aplikasi ini bekerja dengan mengambil citra empon-empon yang diunggah pengguna menggunakan kamera atau gambar yang sudah ada di galeri smartphone pengguna, lalu diproses dengan deep learning hingga menghasilkan hasil prediksi yang berupa nama jenis empon-empon."
+            "Bagaimana Proses Fitur Deteksi?",
+            "Aplikasi ini bekerja dengan mengambil citra empon-empon yang diunggah pengguna menggunakan kamera atau gambar yang sudah ada di galeri smartphone pengguna, lalu diproses dengan deep learning hingga menghasilkan hasil prediksi yang berupa nama jenis empon-empon.\n\n" +
+                    "Instruksi fitur deteksi:\n" +
+                    "1. Masuk ke tab/halaman 'Detect'\n" +
+                    "2. Tekan tombol 'UPLOAD'\n" +
+                    "3. Pilih gambar menggunakan kamera/galeri\n" +
+                    "4. Sesudah gambar dimuat, tekan tombol 'PROCESS'\n"
         ),
         Question(
             2,

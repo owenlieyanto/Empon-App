@@ -76,26 +76,27 @@
                 android:layout_marginTop="16dp"
                 android:text="Manfaat :"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <TextView
                 android:id="@+id/textViewManfaatDetail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="meredakan gejala hamil\nmeredakan gejala hamil\nmeredakan gejala hamil\nmeredakan gejala hamil\nmeredakan gejala hamil\nmeredakan gejalaasdf adsf asdf hamil"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textViewnull"
-                app:layout_constraintTop_toTopOf="@+id/textViewnull" />
+                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textViewnull" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Kandungan :"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -105,12 +106,13 @@
                 android:id="@+id/textViewKandunganDetail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="Serat pangan\nSerat pangan\nSerat pangan\nSerat pangan\nSerat pangan"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textViewManfaatDetail"
-                app:layout_constraintTop_toTopOf="@+id/textView8" />
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
