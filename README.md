@@ -12,7 +12,7 @@ Android App for My Final Project at University of Surabaya
 ## Usage
 ### Android App
 - You can find the Android Studio project in [android_empon_ta](https://github.com/owenlieyanto/empon_app/tree/master/android_empon_ta) folder.
-- If the server is not online, you need to change the url in `DetectFragment.kt` on line 81:
+- If the server is not online, you need to change the url in `DetectFragment.kt` on line 81 to:
 
 ```
 val url = "http://10.0.2.2:5000/predict"
