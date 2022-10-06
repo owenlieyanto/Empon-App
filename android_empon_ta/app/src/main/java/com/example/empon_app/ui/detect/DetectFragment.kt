@@ -13,7 +13,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request.Method.POST
@@ -31,7 +30,7 @@ import java.io.ByteArrayOutputStream
 import kotlin.collections.set
 
 
-class DetectFragment : Fragment() {
+class DetectFragment : androidx.fragment.app.Fragment() {
 
     private var _binding: FragmentDetectBinding? = null
 
@@ -78,7 +77,7 @@ class DetectFragment : Fragment() {
             val imageToBeUploaded: ByteArray = baos.toByteArray()
 
             onLoading(true)
-            val url = "http://143.198.192.71:5000/predict"
+            val url = "http://10.0.2.2:5000/predict"
             val request = object : VolleyFileUploadRequest(
                 POST,
                 url,
